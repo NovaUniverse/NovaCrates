@@ -16,7 +16,7 @@ import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 public class CrateSetDisplayNameCommand extends NovaSubCommand {
 
 	public CrateSetDisplayNameCommand() {
-		super("novacrates");
+		super("setdisplayname");
 
 		setPermission("novacretes.command.crate.setdisplayname");
 		setPermissionDefaultValue(PermissionDefault.OP);

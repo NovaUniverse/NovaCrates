@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import io.github.bananapuncher714.nbteditor.NBTEditor;
+import net.novauniverse.crates.commands.crates.animation.CrateAnimation;
 import net.novauniverse.crates.create.editor.CrateEditorInventoryHolder;
 import net.novauniverse.crates.create.manager.CrateManager;
 import net.zeeraa.novacore.commons.log.Log;
@@ -101,6 +102,14 @@ public class CrateData {
 		return stack;
 	}
 
+	public ItemStack getIconItemStack() {
+		ItemBuilder builder = new ItemBuilder(icon);
+
+		builder.setName(displayName);
+
+		return builder.build();
+	}
+
 	public boolean isKeyItem(ItemStack item) {
 		if (NBTEditor.contains(item, "novacreates", "key", "cratename")) {
 			String createName = NBTEditor.getString(item, "novacreates", "key", "cratename");
@@ -164,5 +173,9 @@ public class CrateData {
 		}
 
 		player.openInventory(inventory);
+	}
+
+	public void open(Player player) {
+		new CrateAnimation(player, this);
 	}
 }

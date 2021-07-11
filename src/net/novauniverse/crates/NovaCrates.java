@@ -13,6 +13,7 @@ import net.novauniverse.crates.commands.crates.CratesCommand;
 import net.novauniverse.crates.create.manager.CrateManager;
 import net.zeeraa.novacore.spigot.command.CommandRegistry;
 import net.zeeraa.novacore.spigot.module.ModuleManager;
+import net.zeeraa.novacore.spigot.module.modules.gui.GUIManager;
 
 public class NovaCrates extends JavaPlugin {
 	private static NovaCrates instance;
@@ -35,7 +36,10 @@ public class NovaCrates extends JavaPlugin {
 			e.printStackTrace();
 		}
 
+		ModuleManager.require(GUIManager.class);
+
 		ModuleManager.loadModule(CrateManager.class, true);
+
 		CommandRegistry.registerCommand(new CrateCommand());
 		CommandRegistry.registerCommand(new CratesCommand());
 
