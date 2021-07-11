@@ -40,19 +40,19 @@ public class CrateSetKeyCommand extends NovaSubCommand {
 		if (args.length > 0) {
 			String name = args[0];
 
-			CrateData create = CrateManager.getInstance().getCrate(name);
+			CrateData crate = CrateManager.getInstance().getCrate(name);
 
-			if (create != null) {
+			if (crate != null) {
 				Player player = (Player) sender;
 				ItemStack item = VersionIndependantUtils.get().getItemInMainHand(player);
 
 				if (item != null) {
 					if (item.getType() != Material.AIR) {
-						create.setKey(item.getType());
+						crate.setKey(item.getType());
 
 						try {
-							create.save();
-							sender.sendMessage(ChatColor.GREEN + "The icon of " + ChatColor.AQUA + create.getName() + ChatColor.GREEN + " is now " + ChatColor.AQUA + item.getType().name());
+							crate.save();
+							sender.sendMessage(ChatColor.GREEN + "The icon of " + ChatColor.AQUA + crate.getName() + ChatColor.GREEN + " is now " + ChatColor.AQUA + item.getType().name());
 						} catch (IOException e) {
 							sender.sendMessage(ChatColor.RED + "Failed to save crate data. " + e.getClass().getName() + " " + e.getMessage());
 							e.printStackTrace();

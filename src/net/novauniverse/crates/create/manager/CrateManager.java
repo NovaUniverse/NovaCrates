@@ -86,6 +86,8 @@ public class CrateManager extends NovaModule implements Listener {
 
 			crates.add(create);
 		}
+
+		crates.sort(new CrateComparator());
 	}
 
 	public File getDataFolder() {
@@ -197,5 +199,10 @@ public class CrateManager extends NovaModule implements Listener {
 		crate.open(player);
 
 		return true;
+	}
+
+	public void reload() throws JSONException, IOException {
+		crates.clear();
+		loadCreates();
 	}
 }

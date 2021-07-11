@@ -36,10 +36,10 @@ public class CrateEditCommand extends NovaSubCommand {
 		if (args.length > 0) {
 			String name = args[0];
 
-			CrateData create = CrateManager.getInstance().getCrate(name);
+			CrateData crate = CrateManager.getInstance().getCrate(name);
 
-			if (create != null) {
-				create.openEditor((Player) sender);
+			if (crate != null) {
+				crate.openEditor((Player) sender);
 			} else {
 				sender.sendMessage(ChatColor.RED + "Could not find crate named " + ChatColor.AQUA + name);
 			}

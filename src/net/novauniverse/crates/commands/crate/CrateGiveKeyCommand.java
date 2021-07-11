@@ -40,16 +40,16 @@ public class CrateGiveKeyCommand extends NovaSubCommand {
 		} else {
 			String name = args[0];
 
-			CrateData create = CrateManager.getInstance().getCrate(name);
+			CrateData crate = CrateManager.getInstance().getCrate(name);
 
-			if (create != null) {
+			if (crate != null) {
 
 				if (args.length > 1) {
 					Player player = Bukkit.getServer().getPlayer(args[1]);
 
 					if (player != null) {
 						if (player.isOnline()) {
-							player.getInventory().addItem(create.getKeyItemStack());
+							player.getInventory().addItem(crate.getKeyItemStack());
 							sender.sendMessage(ChatColor.GREEN + "Key added");
 						} else {
 							sender.sendMessage(ChatColor.RED + "That player is not online");
@@ -61,7 +61,7 @@ public class CrateGiveKeyCommand extends NovaSubCommand {
 					if (sender instanceof InventoryHolder) {
 						InventoryHolder holder = (InventoryHolder) sender;
 
-						holder.getInventory().addItem(create.getKeyItemStack());
+						holder.getInventory().addItem(crate.getKeyItemStack());
 
 						sender.sendMessage(ChatColor.GREEN + "Key added");
 					} else {

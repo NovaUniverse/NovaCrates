@@ -49,7 +49,7 @@ public class CrateAddCommand extends NovaSubCommand {
 
 			placeholder.add(new ItemBuilder(Material.DIRT).setName("Placeholder").build());
 
-			CrateData newCreate = new CrateData(placeholder, Material.CHEST, Material.STICK, name, name);
+			CrateData newCreate = new CrateData(placeholder, Material.CHEST, Material.STICK, name, name, 1);
 
 			try {
 				newCreate.save();

@@ -1,6 +1,7 @@
 package net.novauniverse.crates;
 
 import java.io.IOException;
+import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
@@ -17,6 +18,8 @@ import net.zeeraa.novacore.spigot.module.modules.gui.GUIManager;
 
 public class NovaCrates extends JavaPlugin {
 	private static NovaCrates instance;
+	
+	private Random random;
 
 	public static NovaCrates getInstance() {
 		return instance;
@@ -25,11 +28,21 @@ public class NovaCrates extends JavaPlugin {
 	public static CrateManager getCrateManager() {
 		return CrateManager.getInstance();
 	}
+	
+	public Random getRandomInstance() {
+		return random;
+	}
+	
+	public void setRandomInstance(Random random) {
+		this.random = random;
+	}
 
 	@Override
 	public void onEnable() {
 		NovaCrates.instance = this;
 
+		this.random = new Random();
+		
 		try {
 			FileUtils.forceMkdir(getDataFolder());
 		} catch (IOException e) {

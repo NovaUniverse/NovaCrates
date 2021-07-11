@@ -23,6 +23,7 @@ public class CrateCommand extends NovaCommand {
 		addSubCommand(new CrateSetKeyCommand());
 		addSubCommand(new CrateGiveKeyCommand());
 		addSubCommand(new CrateSetDisplayNameCommand());
+		addSubCommand(new CrateSetSortingNumberCommand());
 		addHelpSubCommand();
 		setEmptyTabMode(true);
 	}

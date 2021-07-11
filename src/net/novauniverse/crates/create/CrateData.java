@@ -29,13 +29,15 @@ public class CrateData {
 	private Material key;
 	private String name;
 	private String displayName;
+	private int sortingNumber;
 
-	public CrateData(List<ItemStack> items, Material icon, Material key, String name, String displayName) {
+	public CrateData(List<ItemStack> items, Material icon, Material key, String name, String displayName, int sortingNumber) {
 		this.items = items;
 		this.icon = icon;
 		this.key = key;
 		this.name = name;
 		this.displayName = displayName;
+		this.sortingNumber = sortingNumber;
 	}
 
 	public List<ItemStack> getItems() {
@@ -69,6 +71,14 @@ public class CrateData {
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
+	
+	public int getSortingNumber() {
+		return sortingNumber;
+	}
+	
+	public void setSortingNumber(int sortingNumber) {
+		this.sortingNumber = sortingNumber;
+	}
 
 	public JSONObject serialize() throws IOException {
 		JSONObject json = new JSONObject();
@@ -84,6 +94,7 @@ public class CrateData {
 		json.put("key", key.name());
 		json.put("display_name", displayName);
 		json.put("items", itemsJson);
+		json.put("sorting_number", sortingNumber);
 
 		return json;
 	}
@@ -139,6 +150,12 @@ public class CrateData {
 		String name = json.getString("name");
 		String displayName = json.getString("display_name");
 
+		int sortingNumber = 1;
+		
+		if(json.has("sorting_number")) {
+			sortingNumber = json.getInt("sorting_number");
+		}
+		
 		try {
 			icon = Material.valueOf(iconMaterialName);
 		} catch (Exception e) {
@@ -151,7 +168,7 @@ public class CrateData {
 			Log.warn("CreateData", "Error while deserializing crate data for create " + name + ". Material " + keyMaterialName + " is not valid");
 		}
 
-		return new CrateData(items, icon, key, name, displayName);
+		return new CrateData(items, icon, key, name, displayName, sortingNumber);
 	}
 
 	public void save() throws IOException {
