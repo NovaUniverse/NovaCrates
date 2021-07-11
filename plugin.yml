@@ -1,0 +1,5 @@
+main: net.novauniverse.creates.NovaCreates
+name: NovaCreates
+description: A create plugin
+version: 1.0
+depend: [NovaCore]
