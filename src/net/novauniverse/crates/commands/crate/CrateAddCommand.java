@@ -32,6 +32,11 @@ public class CrateAddCommand extends NovaSubCommand {
 
 	@Override
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+		if (!CrateManager.getInstance().isEnabled()) {
+			sender.sendMessage(ChatColor.RED + "Crates are disabled");
+			return false;
+		}
+
 		if (args.length > 0) {
 			String name = args[0];
 
@@ -59,5 +64,4 @@ public class CrateAddCommand extends NovaSubCommand {
 		}
 		return true;
 	}
-
 }

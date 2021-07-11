@@ -28,6 +28,11 @@ public class CrateSetDisplayNameCommand extends NovaSubCommand {
 
 	@Override
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+		if(!CrateManager.getInstance().isEnabled()) {
+			sender.sendMessage(ChatColor.RED + "Crates are disabled");
+			return false;
+		}
+		
 		if (args.length > 0) {
 			String name = args[0];
 
@@ -66,6 +71,10 @@ public class CrateSetDisplayNameCommand extends NovaSubCommand {
 
 	@Override
 	public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+		if (!CrateManager.getInstance().isEnabled()) {
+			return new ArrayList<>();
+		}
+		
 		List<String> result = new ArrayList<>();
 
 		for (CrateData create : CrateManager.getInstance().getCrates()) {

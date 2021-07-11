@@ -32,5 +32,4 @@ public class CrateCommand extends NovaCommand {
 		sender.sendMessage(ChatColor.GOLD + "Use" + ChatColor.AQUA + " /crate help" + ChatColor.GOLD + " for help");
 		return true;
 	}
-
 }

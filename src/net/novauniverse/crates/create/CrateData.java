@@ -96,14 +96,14 @@ public class CrateData {
 
 		ItemStack stack = builder.build();
 
-		stack = NBTEditor.set(stack, name, "novacreates", "key", "createname");
+		stack = NBTEditor.set(stack, name, "novacreates", "key", "cratename");
 
 		return stack;
 	}
 
 	public boolean isKeyItem(ItemStack item) {
-		if (NBTEditor.contains(item, "novacreates", "key", "createname")) {
-			String createName = NBTEditor.getString(item, "novacreates", "key", "createname");
+		if (NBTEditor.contains(item, "novacreates", "key", "cratename")) {
+			String createName = NBTEditor.getString(item, "novacreates", "key", "cratename");
 
 			if (createName != null) {
 				return createName.equalsIgnoreCase(name);
@@ -133,13 +133,13 @@ public class CrateData {
 		try {
 			icon = Material.valueOf(iconMaterialName);
 		} catch (Exception e) {
-			Log.warn("CreateData", "Error while deserializing create data for create " + name + ". Material " + iconMaterialName + " is not valid");
+			Log.warn("CreateData", "Error while deserializing crate data for create " + name + ". Material " + iconMaterialName + " is not valid");
 		}
 
 		try {
 			key = Material.valueOf(keyMaterialName);
 		} catch (Exception e) {
-			Log.warn("CreateData", "Error while deserializing create data for create " + name + ". Material " + keyMaterialName + " is not valid");
+			Log.warn("CreateData", "Error while deserializing crate data for create " + name + ". Material " + keyMaterialName + " is not valid");
 		}
 
 		return new CrateData(items, icon, key, name, displayName);
@@ -148,7 +148,7 @@ public class CrateData {
 	public void save() throws IOException {
 		File file = new File(CrateManager.getInstance().getDataFolder().getAbsolutePath() + File.separator + name + ".json");
 
-		Log.debug("CreateData", "Saving create data to " + file.getAbsolutePath());
+		Log.debug("CreateData", "Saving crate data to " + file.getAbsolutePath());
 
 		JSONFileUtils.saveJson(file, this.serialize());
 	}

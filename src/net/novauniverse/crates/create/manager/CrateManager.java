@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.io.FilenameUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -122,5 +123,9 @@ public class CrateManager extends NovaModule implements Listener {
 
 			e.getPlayer().sendMessage(ChatColor.GREEN + "Create saved");
 		}
+	}
+	
+	public void showMenu(Player player) {
+		
 	}
 }
