@@ -1,5 +1,5 @@
-main: net.novauniverse.creates.NovaCreates
-name: NovaCreates
-description: A create plugin
+main: net.novauniverse.crates.NovaCrates
+name: NovaCrates
+description: A crate plugin
 version: 1.0
 depend: [NovaCore]
