@@ -5,7 +5,6 @@ import java.util.Comparator;
 import net.novauniverse.crates.create.CrateData;
 
 public class CrateComparator implements Comparator<CrateData> {
-
 	@Override
 	public int compare(CrateData a, CrateData b) {
 		if (a.getSortingNumber() < b.getSortingNumber()) {

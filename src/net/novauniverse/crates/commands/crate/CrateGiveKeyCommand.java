@@ -16,7 +16,6 @@ import net.zeeraa.novacore.spigot.command.AllowedSenders;
 import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 
 public class CrateGiveKeyCommand extends NovaSubCommand {
-
 	public CrateGiveKeyCommand() {
 		super("givekey");
 
@@ -30,11 +29,11 @@ public class CrateGiveKeyCommand extends NovaSubCommand {
 
 	@Override
 	public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-		if(!CrateManager.getInstance().isEnabled()) {
+		if (!CrateManager.getInstance().isEnabled()) {
 			sender.sendMessage(ChatColor.RED + "Crates are disabled");
 			return false;
 		}
-		
+
 		if (args.length == 0) {
 			sender.sendMessage(ChatColor.RED + "Please provide the name of the crate you want to get a key for");
 		} else {
@@ -81,17 +80,13 @@ public class CrateGiveKeyCommand extends NovaSubCommand {
 		if (!CrateManager.getInstance().isEnabled()) {
 			return new ArrayList<>();
 		}
-		
+
 		List<String> result = new ArrayList<>();
 
 		if (args.length == 0 || args.length == 1) {
-			for (CrateData create : CrateManager.getInstance().getCrates()) {
-				result.add(create.getName());
-			}
+			CrateManager.getInstance().getCrates().forEach(c -> result.add(c.getName()));
 		} else if (args.length == 2) {
-			for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-				result.add(player.getName());
-			}
+			Bukkit.getServer().getOnlinePlayers().forEach(p -> result.add(p.getName()));
 		}
 
 		return result;

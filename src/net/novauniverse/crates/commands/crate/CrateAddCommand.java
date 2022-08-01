@@ -17,7 +17,6 @@ import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 import net.zeeraa.novacore.spigot.utils.ItemBuilder;
 
 public class CrateAddCommand extends NovaSubCommand {
-
 	public CrateAddCommand() {
 		super("add");
 

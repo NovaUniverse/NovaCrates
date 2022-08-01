@@ -13,12 +13,11 @@ import org.bukkit.permissions.PermissionDefault;
 
 import net.novauniverse.crates.create.CrateData;
 import net.novauniverse.crates.create.manager.CrateManager;
-import net.zeeraa.novacore.spigot.abstraction.VersionIndependantUtils;
+import net.zeeraa.novacore.spigot.abstraction.VersionIndependentUtils;
 import net.zeeraa.novacore.spigot.command.AllowedSenders;
 import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 
 public class CrateSetKeyCommand extends NovaSubCommand {
-
 	public CrateSetKeyCommand() {
 		super("setkey");
 
@@ -44,7 +43,7 @@ public class CrateSetKeyCommand extends NovaSubCommand {
 
 			if (crate != null) {
 				Player player = (Player) sender;
-				ItemStack item = VersionIndependantUtils.get().getItemInMainHand(player);
+				ItemStack item = VersionIndependentUtils.get().getItemInMainHand(player);
 
 				if (item != null) {
 					if (item.getType() != Material.AIR) {
@@ -80,9 +79,7 @@ public class CrateSetKeyCommand extends NovaSubCommand {
 		
 		List<String> result = new ArrayList<>();
 
-		for (CrateData create : CrateManager.getInstance().getCrates()) {
-			result.add(create.getName());
-		}
+		CrateManager.getInstance().getCrates().forEach(c -> result.add(c.getName()));
 
 		return result;
 	}

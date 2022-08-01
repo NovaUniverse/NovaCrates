@@ -51,7 +51,7 @@ public class NovaCrates extends JavaPlugin {
 
 		ModuleManager.require(GUIManager.class);
 
-		ModuleManager.loadModule(CrateManager.class, true);
+		ModuleManager.loadModule(this, CrateManager.class, true);
 
 		CommandRegistry.registerCommand(new CrateCommand());
 		CommandRegistry.registerCommand(new CratesCommand());

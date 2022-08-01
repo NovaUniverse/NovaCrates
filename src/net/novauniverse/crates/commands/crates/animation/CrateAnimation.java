@@ -13,9 +13,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import net.novauniverse.crates.NovaCrates;
 import net.novauniverse.crates.create.CrateData;
 import net.zeeraa.novacore.commons.utils.ListUtils;
-import net.zeeraa.novacore.spigot.abstraction.VersionIndependantUtils;
+import net.zeeraa.novacore.spigot.abstraction.VersionIndependentUtils;
 import net.zeeraa.novacore.spigot.abstraction.enums.ColoredBlockType;
-import net.zeeraa.novacore.spigot.abstraction.enums.VersionIndependantSound;
+import net.zeeraa.novacore.spigot.abstraction.enums.VersionIndependentSound;
 import net.zeeraa.novacore.spigot.module.modules.gui.holders.GUIReadOnlyHolder;
 import net.zeeraa.novacore.spigot.utils.ItemBuilder;
 
@@ -44,11 +44,11 @@ public class CrateAnimation {
 		inventory = Bukkit.getServer().createInventory(holder, 3 * 9, crate.getDisplayName());
 
 		for (int i = 0; i < inventory.getSize(); i++) {
-			inventory.setItem(i, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.WHITE, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+			inventory.setItem(i, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.WHITE, ColoredBlockType.GLASS_PANE)).setName(" ").build());
 		}
 
-		inventory.setItem(4, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
-		inventory.setItem(22, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+		inventory.setItem(4, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+		inventory.setItem(22, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
 
 		this.render();
 
@@ -58,7 +58,7 @@ public class CrateAnimation {
 	}
 
 	private void tick() {
-		VersionIndependantUtils.get().playSound(player, player.getLocation(), VersionIndependantSound.NOTE_HAT, 1F, 1.5F);
+		VersionIndependentUtils.get().playSound(player, player.getLocation(), VersionIndependentSound.NOTE_HAT, 1F, 1.5F);
 
 		spinner.remove(0);
 		this.pushToSpinner();
@@ -125,14 +125,14 @@ public class CrateAnimation {
 				ItemStack item = spinner.get(4);
 
 				for (int i = 0; i < inventory.getSize(); i++) {
-					inventory.setItem(i, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.WHITE, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+					inventory.setItem(i, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.WHITE, ColoredBlockType.GLASS_PANE)).setName(" ").build());
 				}
-				inventory.setItem(4, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
-				inventory.setItem(22, new ItemBuilder(VersionIndependantUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+				inventory.setItem(4, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
+				inventory.setItem(22, new ItemBuilder(VersionIndependentUtils.get().getColoredItem(DyeColor.LIME, ColoredBlockType.GLASS_PANE)).setName(" ").build());
 
 				inventory.setItem(13, item);
 
-				VersionIndependantUtils.get().playSound(player, player.getLocation(), VersionIndependantSound.NOTE_PLING);
+				VersionIndependentUtils.get().playSound(player, player.getLocation(), VersionIndependentSound.NOTE_PLING);
 
 				player.getInventory().addItem(item);
 			}

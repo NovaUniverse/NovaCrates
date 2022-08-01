@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.apache.commons.io.FilenameUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,12 +30,17 @@ import net.novauniverse.crates.create.CrateData;
 import net.novauniverse.crates.create.editor.CrateEditorInventoryHolder;
 import net.zeeraa.novacore.commons.log.Log;
 import net.zeeraa.novacore.commons.utils.JSONFileUtils;
+import net.zeeraa.novacore.spigot.abstraction.enums.VersionIndependentSound;
 import net.zeeraa.novacore.spigot.module.NovaModule;
 import net.zeeraa.novacore.spigot.module.modules.gui.GUIAction;
 import net.zeeraa.novacore.spigot.module.modules.gui.callbacks.GUIClickCallback;
 import net.zeeraa.novacore.spigot.module.modules.gui.holders.GUIReadOnlyHolder;
 
 public class CrateManager extends NovaModule implements Listener {
+	public CrateManager() {
+		super("NovaCrates.CrateManager");
+	}
+
 	private static CrateManager instance;
 	private File dataFolder;
 
@@ -54,13 +61,9 @@ public class CrateManager extends NovaModule implements Listener {
 		}
 	}
 
+	@Nullable
 	public CrateData getCrate(String crateName) {
-		for (CrateData crate : crates) {
-			if (crate.getName().equalsIgnoreCase(crateName)) {
-				return crate;
-			}
-		}
-		return null;
+		return crates.stream().filter(c -> c.getName().equalsIgnoreCase(crateName)).findFirst().orElse(null);
 	}
 
 	@Override
@@ -96,11 +99,6 @@ public class CrateManager extends NovaModule implements Listener {
 
 	public List<CrateData> getCrates() {
 		return crates;
-	}
-
-	@Override
-	public String getName() {
-		return "PixelmonCreateManager";
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
@@ -154,7 +152,7 @@ public class CrateManager extends NovaModule implements Listener {
 				@Override
 				public GUIAction onClick(Inventory clickedInventory, Inventory inventory, HumanEntity entity, int clickedSlot, SlotType slotType, InventoryAction clickType) {
 					if (!openCrate(player, crate, true)) {
-						player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1F, 1F);
+						VersionIndependentSound.ANVIL_BREAK.play(player);
 						player.sendMessage(ChatColor.RED + "You dont have the required key to open this crate");
 					}
 					return GUIAction.CANCEL_INTERACTION;

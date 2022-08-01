@@ -15,7 +15,6 @@ import net.zeeraa.novacore.spigot.command.AllowedSenders;
 import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 
 public class CrateSetSortingNumberCommand extends NovaSubCommand {
-
 	public CrateSetSortingNumberCommand() {
 		super("setsortingnumber");
 
@@ -83,9 +82,7 @@ public class CrateSetSortingNumberCommand extends NovaSubCommand {
 
 		List<String> result = new ArrayList<>();
 
-		for (CrateData create : CrateManager.getInstance().getCrates()) {
-			result.add(create.getName());
-		}
+		CrateManager.getInstance().getCrates().forEach(c -> result.add(c.getName()));
 
 		return result;
 	}

@@ -9,7 +9,6 @@ import net.zeeraa.novacore.spigot.command.AllowedSenders;
 import net.zeeraa.novacore.spigot.command.NovaCommand;
 
 public class CrateCommand extends NovaCommand {
-
 	public CrateCommand() {
 		super("crate", NovaCrates.getInstance());
 

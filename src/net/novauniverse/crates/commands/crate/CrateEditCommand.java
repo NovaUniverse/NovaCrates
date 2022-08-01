@@ -14,7 +14,6 @@ import net.zeeraa.novacore.spigot.command.AllowedSenders;
 import net.zeeraa.novacore.spigot.command.NovaSubCommand;
 
 public class CrateEditCommand extends NovaSubCommand {
-
 	public CrateEditCommand() {
 		super("edit");
 
@@ -54,12 +53,10 @@ public class CrateEditCommand extends NovaSubCommand {
 		if (!CrateManager.getInstance().isEnabled()) {
 			return new ArrayList<>();
 		}
-		
+
 		List<String> result = new ArrayList<>();
 
-		for (CrateData create : CrateManager.getInstance().getCrates()) {
-			result.add(create.getName());
-		}
+		CrateManager.getInstance().getCrates().forEach(c -> result.add(c.getName()));
 
 		return result;
 	}
